@@ -1,0 +1,52 @@
+:root {
+  --backgroundColor: rgba(2, 0, 36, 1);
+  --backgroundGradient:linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(0,26,48,1) 100%);
+  --backgroundGradientNew:black;
+  --textColor: #E8E8E8; }
+
+/*Sunrise-1
+background: rgb(0,90,167);
+background:linear-gradient(180deg, rgba(0,90,167,1) 0%, rgba(41,141,205,1) 20%, rgba(80,189,242,1) 40%, rgba(192,227,231,1) 60%, rgba(252,240,151,1) 80%, rgba(251,218,134,1) 100%);
+*/
+/*Sunrise-2
+background: rgb(1,29,112);
+background: linear-gradient(180deg, rgba(1,29,112,1) 0%, rgba(47,89,129,1) 27%, rgba(95,127,138,1) 46%, rgba(198,177,142,1) 73%, rgba(190,103,74,1) 100%);
+*/
+/*High Noon
+ background: background: linear-gradient(180deg, rgba(34,121,177,1) 0%, rgba(101,202,238,1) 100%); 
+*/
+body {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background: var(--backgroundColor);
+  background: var(--backgroundGradient);
+  transition: background 5s ease; }
+  body.transitioning {
+    transition: background 5s ease; }
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+
+.time, .date, p {
+  color: var(--textColor);
+  font-family: 'Montserrat', sans-serif; }
+
+.time {
+  display: flex;
+  font-size: 120px; }
+
+.date {
+  font-size: 20px; }
+
+.date div {
+  display: inline; }
+
+.colon {
+  margin-top: -10px; }
