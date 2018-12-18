@@ -3191,6 +3191,36 @@
 
 })));
 
+function getColorData() {
+	const data = {
+		/*within each section is a map - key being a # which will be used to compare 
+		the current minute to/from sunrise/sunset and the value being what is returned 
+		for the app to use to create the gradient.*/
+		dawn: {
+			//90: beginning of dawn
+			//0: sunrise
+			0: "zero",
+			1: "one",
+			2: "two",
+			"test": "let's get this bread",
+			3: "three"
+		},
+		daybreak: {
+			//0: sunrise
+			//90: day
+
+		},
+		sunsetting: {
+			//0: beginning of sunset
+			//90: actual technical sunset
+		},
+		dusk: {
+			//0: sunset
+			//90: end of dusk
+		}
+	};
+	return data;
+}
 /*function renderDay(num) {
 	let day;
  	switch (num) {
@@ -3379,6 +3409,18 @@ Utility function that returns the total minutes since midnight.
 function timeToMins(date) {
   return (date.getHours() * 60) + date.getMinutes();
 }
+/*
+Utility function that takes an object that uses numeral keys and returns a map 
+Ensures the keys are actually numerals and not strings
+TO DO - add validation that only numeral keys are being added. For some reason if (Number(k) != NaN) doesn't work.
+*/
+function numKeyToStrMap(obj) {
+    let strMap = new Map();
+    for (let k in obj) {
+      strMap.set(Number(k), obj[k]);
+    }
+    return strMap;
+}
 
 /*
 Currently not used - Color Class 
@@ -3431,7 +3473,7 @@ function tempIncrementGradient(scale) {
   return scale;
 }
 
-//functions to try to smooth the transition. currently not working. this is due to gradients not being able to transition in CSS atm.
+//functions to try to smooth the transition. currently not working and not called anywhere. this is due to gradients not being able to transition in CSS atm.
 function startTransition(gradient) {
   let body = document.body;
   let root = document.documentElement;
@@ -3446,6 +3488,59 @@ function stopTransition(gradient) {
   body.classList.remove('transitioning');
 }
 
+/*This function creates the scale based on the current time and sunrise time. 
+Eventually, the function will only recieve the sunrise & sunset time, but while building it will get current time as well*/
+function createScale(current, sunrise, sunset) {
+  const curMins = timeToMins(current);
+  const sunriseMins = timeToMins(sunrise);
+  const sunsetMins = timeToMins(sunset);
+  const dayMiddle = sunsetMins - sunriseMins;
+  if (curMins < dayMiddle) {
+    if (curMins < sunriseMins) {
+      if ((sunriseMins - curMins) < 90) {
+        console.log('dawn');
+        
+        let dawnMap = getColorData();
+        dawnMap = dawnMap.dawn;
+        //console.log(dawnMap[0]);
+        dawnMap = numKeyToStrMap(dawnMap);
+        console.log(dawnMap);
+        let testMap = new Map();
+        testMap.set(0, "zero");
+        testMap.set(1, "one");
+        testMap.set(2, "two");
+        console.log(testMap);
+
+      }
+      else {
+        console.log('night');
+      }
+    } else {
+      if ((curMins - sunriseMins) < 90) {
+        console.log('daybreak');
+      }
+      else {
+        console.log('day');
+      }
+    }
+  } else {
+    if (curMins < sunsetMins) {
+      if ((sunsetMins - curMins) > 90) {
+        console.log('day');
+      }
+      else {
+        console.log('sun starts to set');
+      }
+    } else {
+      if ((curMins - sunsetMins) < 90) {
+        console.log('dusk');
+      }
+      else {
+        console.log('night');
+      }
+    }
+  }
+}
 
 /*
 This is a temporary function in place to run with the test buttons. It will update the background with the accurate daylight 
@@ -3454,30 +3549,41 @@ function testApp(id) {
   let root = document.documentElement;
   let testDate = new Date();
   testDate.setMinutes(0);
+  let sunrise = new Date();
+  sunrise.setHours(7);
+  sunrise.setMinutes(0);
+  let sunset = new Date();
+  sunset.setHours(18);
+  sunset.setMinutes(0);
   if (id == "night") {
-     const night = chroma.scale([[2,0,36],[0,32,59]]);
-     let nightGradient = generateGradientBkgd(night);
-     console.log(nightGradient);
-     root.style.setProperty('--backgroundColor', 'rgba(2, 0, 36, 1)');
-     root.style.setProperty('--backgroundGradient', nightGradient);
+      let night = chroma.scale([[2,0,36],[0,32,59]]);
+      testDate.setHours(1);
+      createScale(testDate, sunrise, sunset);
+      setInterval(function () {
+        night = tempIncrementGradient(night);
+        let newGradient = generateGradientBkgd(night);
+        root.style.setProperty('--backgroundGradient', newGradient);
+      }, 1000);
   } else if (id == "sixAM") {
+    testDate.setHours(6);
+      createScale(testDate, sunrise, sunset);
     root.style.setProperty('--backgroundColor', 'rgba(2, 0, 36, 1)');
      root.style.setProperty('--backgroundGradient', 'linear-gradient(180deg, rgba(2,51,93,1) 0%, rgba(16,76,115,1) 20%, rgba(29,97,130,1) 40%, rgba(43,115,149,1) 60%, rgba(114,158,190,1) 80%, rgba(138,175,205,1) 100%)');
   } else if (id == "sevenAM") {
+    testDate.setHours(7);
+      createScale(testDate, sunrise, sunset);
     root.style.setProperty('--backgroundColor', 'rgb(0,90,167,1)');
      root.style.setProperty('--backgroundGradient', 'linear-gradient(180deg, rgba(0,90,167,1) 0%, rgba(41,141,205,1) 20%, rgba(80,189,242,1) 40%, rgba(192,227,231,1) 60%, rgba(252,240,151,1) 80%, rgba(251,218,134,1) 100%)');
   } else if (id == "noon") {
+    testDate.setHours(12);
+      createScale(testDate, sunrise, sunset);
     const daylight = chroma.scale([[34,121,177],[101,202,238],[189,233,249,1]]);
     let daylightGradient = generateGradientBkgd(daylight);
     console.log(daylightGradient);
     root.style.setProperty('--backgroundGradient', daylightGradient);
   } else if (id == "increment") {
-    let night = chroma.scale([[2,0,36],[0,32,59]]);
-    setInterval(function () {
-      night = tempIncrementGradient(night);
-      let newGradient = generateGradientBkgd(night);
-      root.style.setProperty('--backgroundGradient', newGradient);
-    }, 1000);
+    
+    console.log('moved to night');
   }
   console.log(testDate);
 }
