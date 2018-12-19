@@ -3199,13 +3199,22 @@ function getColorData() {
 		dawn: {
 			//90: beginning of dawn
 			//0: sunrise
-			0: "zero",
-			1: "one",
-			2: "two",
-			"test": "let's get this bread",
-			3: "three"
+			90: `linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(2,0,36,1) 100%)`,
+			80: ``,
+			75: `linear-gradient(180deg, rgba(2,0,36,1) 50%, rgba(12,52,87,1) 100%)`,
+			70: ``,
+			60: `linear-gradient(180deg, rgba(2,0,36,1) 40%, rgba(14,64,107,1) 74%, rgba(79,70,59,1) 87%, rgba(143,53,16,1) 100%)`,
+			50: ``,
+			45: `linear-gradient(180deg, rgba(2,0,36,1) 20%, rgba(14,64,107,1) 71%, rgba(90,108,103,1) 82%, rgba(255,181,79,1) 92%, rgba(231,89,30,1) 100%)`,
+			40: ``,
+			30: `linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(0,32,113,1) 33%, rgba(51,103,130,1) 60%, rgba(129,154,146,1) 77%, rgba(255,199,79,1) 91%, rgba(231,123,30,1) 100%)`,
+			20: ``,
+			15: `linear-gradient(180deg, rgba(6,10,99,1) 0%, rgba(0,50,122,1) 21%, rgba(62,119,149,1) 53%, rgba(150,170,163,1) 75%, rgba(255,199,79,1) 86%, rgba(241,170,86,1) 100%)`,
+			10: ``,
+			1: `linear-gradient(180deg, rgba(0,32,113,1) 0%, rgba(24,74,143,1) 21%, rgba(98,168,204,1) 55%, rgba(236,169,64,1) 84%, rgba(255,199,79,1) 100%)`
 		},
 		daybreak: {
+			0: `linear-gradient(180deg, rgba(0,32,113,1) 0%, rgba(24,74,143,1) 21%, rgba(98,168,204,1) 55%, rgba(236,169,64,1) 84%, rgba(255,199,79,1) 100%)`
 			//0: sunrise
 			//90: day
 
@@ -3423,6 +3432,7 @@ function numKeyToStrMap(obj) {
 }
 
 /*
+NOT BEING USED
 Currently not used - Color Class 
 Properites - 4 rgba items 
 Methods:
@@ -3446,6 +3456,7 @@ function Color(r = 0, g = 0, b = 0, a = 1) {
 }
 
 /*
+NOT BEING USED
 Creates an even gradient that is always 6 colors
 @param - {function} - Chroma.scale function with colors already defined
 @return - {string} - String of generated gradient ready to be used in CSS
@@ -3461,6 +3472,7 @@ function generateGradientBkgd(scale) {
 }
 
 /*
+NOT BEING USED
 This is a temporary function that, when run, the background starts to change every 1 second 
 */
 function tempIncrementGradient(scale) {
@@ -3488,36 +3500,57 @@ function stopTransition(gradient) {
   body.classList.remove('transitioning');
 }
 
+//This is a temporary function for testing - it increases the minute of the test date so each run of getBkgd is incremented
+function tempFixDate(testDate) {
+  let mins = testDate.getMinutes();
+  let hours = testDate.getHours();
+  if (mins >= 59) {
+    testDate.setMinutes(0);
+    if (hours >= 23) {
+       testDate.setHours(0);
+    } else {
+      testDate.setHours(hours + 1);
+    }
+  } else {
+    testDate.setMinutes(mins + 15);
+  }
+  console.log('updated time is now ' + testDate);
+  return testDate;
+}
+
 /*This function creates the scale based on the current time and sunrise time. 
 Eventually, the function will only recieve the sunrise & sunset time, but while building it will get current time as well*/
-function createScale(current, sunrise, sunset) {
+function getBkgd(current, sunrise, sunset, data) {
   const curMins = timeToMins(current);
   const sunriseMins = timeToMins(sunrise);
   const sunsetMins = timeToMins(sunset);
   const dayMiddle = sunsetMins - sunriseMins;
+  let bkgd;
   if (curMins < dayMiddle) {
     if (curMins < sunriseMins) {
-      if ((sunriseMins - curMins) < 90) {
-        console.log('dawn');
-        
-        let dawnMap = getColorData();
-        dawnMap = dawnMap.dawn;
-        //console.log(dawnMap[0]);
-        dawnMap = numKeyToStrMap(dawnMap);
-        console.log(dawnMap);
-        let testMap = new Map();
-        testMap.set(0, "zero");
-        testMap.set(1, "one");
-        testMap.set(2, "two");
-        console.log(testMap);
-
-      }
-      else {
+      if ((sunriseMins - curMins) > 90) {
         console.log('night');
       }
-    } else {
+      else {
+        console.log('dawn');
+        console.log('map should target ' + (sunriseMins - curMins));
+        //turn this into a function
+        let dawnMap = getColorData();
+        dawnMap = dawnMap.dawn;
+        dawnMap = numKeyToStrMap(dawnMap);
+        console.log(dawnMap);
+        bkgd = dawnMap.get(sunriseMins - curMins); 
+      }
+    } else {  //sunrise also included
       if ((curMins - sunriseMins) < 90) {
         console.log('daybreak');
+        console.log('map should target ' + (curMins - sunriseMins));
+        //turn this into a function
+        let daybreakMap = getColorData();
+        daybreakMap = daybreakMap.daybreak;
+        daybreakMap = numKeyToStrMap(daybreakMap);
+        console.log(daybreakMap);
+        bkgd = daybreakMap.get(curMins - sunriseMins);
       }
       else {
         console.log('day');
@@ -3540,52 +3573,50 @@ function createScale(current, sunrise, sunset) {
       }
     }
   }
+  return bkgd;
 }
 
 /*
 This is a temporary function in place to run with the test buttons. It will update the background with the accurate daylight 
 */
 function testApp(id) {
+  const allGradients = getColorData();
   let root = document.documentElement;
+  let newBkgd;
   let testDate = new Date();
   testDate.setMinutes(0);
   let sunrise = new Date();
   sunrise.setHours(7);
   sunrise.setMinutes(0);
   let sunset = new Date();
-  sunset.setHours(18);
+  sunset.setHours(18);  //6pm
   sunset.setMinutes(0);
   if (id == "night") {
-      let night = chroma.scale([[2,0,36],[0,32,59]]);
-      testDate.setHours(1);
-      createScale(testDate, sunrise, sunset);
-      setInterval(function () {
-        night = tempIncrementGradient(night);
-        let newGradient = generateGradientBkgd(night);
-        root.style.setProperty('--backgroundGradient', newGradient);
-      }, 1000);
-  } else if (id == "sixAM") {
-    testDate.setHours(6);
-      createScale(testDate, sunrise, sunset);
-    root.style.setProperty('--backgroundColor', 'rgba(2, 0, 36, 1)');
-     root.style.setProperty('--backgroundGradient', 'linear-gradient(180deg, rgba(2,51,93,1) 0%, rgba(16,76,115,1) 20%, rgba(29,97,130,1) 40%, rgba(43,115,149,1) 60%, rgba(114,158,190,1) 80%, rgba(138,175,205,1) 100%)');
-  } else if (id == "sevenAM") {
+    testDate.setHours(1);
+  } else if (id == "dawn") {
+    testDate.setHours(5);
+    testDate.setMinutes(30);
+  } else if (id == "daybreak") {
     testDate.setHours(7);
-      createScale(testDate, sunrise, sunset);
-    root.style.setProperty('--backgroundColor', 'rgb(0,90,167,1)');
-     root.style.setProperty('--backgroundGradient', 'linear-gradient(180deg, rgba(0,90,167,1) 0%, rgba(41,141,205,1) 20%, rgba(80,189,242,1) 40%, rgba(192,227,231,1) 60%, rgba(252,240,151,1) 80%, rgba(251,218,134,1) 100%)');
   } else if (id == "noon") {
     testDate.setHours(12);
-      createScale(testDate, sunrise, sunset);
-    const daylight = chroma.scale([[34,121,177],[101,202,238],[189,233,249,1]]);
-    let daylightGradient = generateGradientBkgd(daylight);
-    console.log(daylightGradient);
-    root.style.setProperty('--backgroundGradient', daylightGradient);
-  } else if (id == "increment") {
-    
-    console.log('moved to night');
+  } else if (id == "sunsetting") {
+    testDate.setHours(16);
+    testDate.setMinutes(30);
+  } else if (id == "dusk") {
+    testDate.setHours(18);
+  } else if (id == "random") {
+    console.log('not ready yet');
+    testDate.setHours(5);
+    testDate.setMinutes(45);
   }
   console.log(testDate);
+  setInterval(function() {
+    newBkgd = getBkgd(testDate, sunrise, sunset, allGradients);
+    console.log(newBkgd);
+    root.style.setProperty('--backgroundGradient', newBkgd);
+    testDate = tempFixDate(testDate);
+  }, 2000); //starting with 2 seconds
 }
 
 

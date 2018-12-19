@@ -1,0 +1,25 @@
+Just writing this out to figure it out - 
+-Night to Sunrise (and sunset to night) lasts 1.5 hours (roughly) - so if sunrise is at 7am, dawn starts to animate at 5:30am
+-Colors will go: (bottom to top)
+  -(night) dark blue/black 
+  -light blue -> dark blue/black
+  -light blue grows up towards black, black is lightening as well, maintains top 25% of screen
+  -white -> light blue -> deeper blue (whatever the last transition has hit at)
+  -(sunrise) yellow/orange () -> white (small) -> light blue -> deeper blue (blues only make up top third at sunrise peak?)
+  -white replaces/fades into/whatever the yellow and orange -> light blue -> sky blue (deeper blue lightens as white starts to spread, ending to daybreak at sky blue)
+  
+Possible ways to achieve this:
+  -Assign a certain number of colors that exist in a gradient (like 6? 10??) that is updated every other min by the script. The gradient knows to blend everything together, and the constant updating will make the changes subtle    
+  
+  
+  ----
+  12/16 Update
+  Succeeded in creating a way to slowly update a gradient over time. Next step: calculating how frequent the color adjustment function should run, and how much the colors should be brightened in that time. After that, it's time to add a bunch of logic to add the additional sunrise colors.
+  
+------------
+  12/18 Update
+  So I realized that there's still the issue of determining where to START when the app first loads. Sure, the gradient can update over time, but where does the gradient start? If you start the app at 6am, how does the app know what gradient to start with?
+  So I think the only possible way to handle this is to have a giant data file with all the gradients stored. It's cataloged by time to/from sunrise and sunset. That way the app can just compare the current time to the sunrise/sunset time and load the correct gradient. The data can be loaded on the initial load, so the app just has to check already created data every 2-5 mins, so performance shouldn't be an issue.
+  
+  Notes for me as I try to create this big ass file: 
+  -Night: 2,0,36
