@@ -1,0 +1,10 @@
+Ok, right now I have logic that divides the day into:
+    1. night 
+    2. dawn (beginning of "astrospheric twilight", before the sun rises above horizon) - 1.5 hours
+    3. daybreak (after sun rises above horizon) - 1.5 hours (might reduce to 1 hour)
+    4. day
+    5. sun starts to set - 1.5 hours (might reduce to 1 hour)
+    6. dusk (beginning of "astrospheric twilight", after the sun falls below horizon) - 1.5 hours
+So new problem: how to set the gradient for #2, #3, #5 and #6? Possible solutions:
+    - Set each minute (or few minutes) in those sections to a certain percentage. That percentage will correlate with with how the scale will be adjusted. Sections will have to be divyed up more to handle extra colors (more if statements), but the foundational idea remains the same
+    - 
