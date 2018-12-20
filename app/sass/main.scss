@@ -35,9 +35,19 @@ body {
 }
 main {
 	display:flex;
+	position:absolute;
+	z-index: 999;
 	flex-direction:column;
 	align-items:center;
 }
+
+canvas {
+	width: 100vw;
+	height: 100vh;
+	position:absolute;
+	z-index:1;
+}
+
 .time, .date, p {
 	color: var(--textColor);
 	font-family: 'Montserrat', sans-serif;

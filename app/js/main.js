@@ -1,5 +1,6 @@
 //import DarkSkyApi from 'dark-sky-api';
 //import Chroma from 'chroma';
+//which im not using anymore LMAO
 
 /*
 Utility function that returns a string relating to the Date Obj's day of week
@@ -194,6 +195,7 @@ function tempFixDate(testDate) {
   return testDate;
 }
 
+
 /*This function creates the scale based on the current time and sunrise time. 
 Eventually, the function will only recieve the sunrise & sunset time, but while building it will get current time as well*/
 function getBkgd(current, sunrise, sunset, data) {
@@ -206,13 +208,12 @@ function getBkgd(current, sunrise, sunset, data) {
     if (curMins < sunriseMins) {
       if ((sunriseMins - curMins) > 90) {
         console.log('night');
+        //canvasNight();
       }
       else {
         console.log('dawn');
         console.log('map should target ' + (sunriseMins - curMins));
-        //turn this into a function
-        let dawnMap = getColorData();
-        dawnMap = dawnMap.dawn;
+        let dawnMap = data.dawn;
         dawnMap = numKeyToStrMap(dawnMap);
         console.log(dawnMap);
         bkgd = dawnMap.get(sunriseMins - curMins); 
@@ -221,9 +222,7 @@ function getBkgd(current, sunrise, sunset, data) {
       if ((curMins - sunriseMins) < 90) {
         console.log('daybreak');
         console.log('map should target ' + (curMins - sunriseMins));
-        //turn this into a function
-        let daybreakMap = getColorData();
-        daybreakMap = daybreakMap.daybreak;
+        let daybreakMap = data.daybreak;
         daybreakMap = numKeyToStrMap(daybreakMap);
         console.log(daybreakMap);
         bkgd = daybreakMap.get(curMins - sunriseMins);
@@ -239,10 +238,20 @@ function getBkgd(current, sunrise, sunset, data) {
       }
       else {
         console.log('sun starts to set');
+        console.log('map should target ' + (sunsetMins - curMins));
+        let sunsetMap = data.sunsetting;
+        sunsetMap = numKeyToStrMap(sunsetMap);
+        console.log(sunsetMap);
+        bkgd = sunsetMap.get(sunsetMins - curMins);
       }
-    } else {
+    } else { //I THINK also includes sunset 
       if ((curMins - sunsetMins) < 90) {
         console.log('dusk');
+        console.log('map should target ' + (curMins - sunsetMins));
+        let duskMap = data.dusk;
+        duskMap = numKeyToStrMap(duskMap);
+        console.log(duskMap);
+        bkgd = duskMap.get(curMins - sunsetMins);
       }
       else {
         console.log('night');
@@ -253,7 +262,9 @@ function getBkgd(current, sunrise, sunset, data) {
 }
 
 /*
-This is a temporary function in place to run with the test buttons. It will update the background with the accurate daylight 
+This is a semi-temporary function in place to run with the test buttons. It will update the background with the accurate daylight 
+Eventually, this will be adjusted to just get the allGradients data and sunrise/sunset data and kick off the getBkgd() interval
+It's basically evolved to be the gradient's portion "main" function, and should be renamed accordingly.
 */
 function testApp(id) {
   const allGradients = getColorData();
@@ -295,7 +306,6 @@ function testApp(id) {
   }, 2000); //starting with 2 seconds
 }
 
-
 /*
 This function gets the current date and time and then displays it 
 Interval set to run every second
@@ -316,7 +326,11 @@ function setDate() {
   let date = now.getDate();
   let year = now.getFullYear();
 
-  hourID.innerHTML = `${hour > 12 ? hour - 12 : hour}`;
+  if (hour == 0) {
+    hourID.innerHTML = 12;
+  } else {
+     hourID.innerHTML = `${hour > 12 ? hour - 12 : hour}`;
+  }
   minID.innerHTML = `${min < 10 ? '0' : ''}${min}`; 
   dayID.innerHTML = renderDay(day);
   monthID.innerHTML = renderMonth(month);
