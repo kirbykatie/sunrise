@@ -1,7 +1,18 @@
 $night: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(2,0,36,1) 100%);
+$dawn-90: linear-gradient(180deg, rgba(2,0,36,1) 85%, 
+	rgba(4,23,46,1) 100%);
+
+$dawn-88:linear-gradient(180deg, rgba(2,0,36,1) 83%, 
+	rgba(6,28,55,1) 100%);
+
+$dawn-86:linear-gradient(180deg, rgba(2,0,36,1) 80%, 
+	rgba(7,33,64,1) 100%);
 
 $dawn-83: linear-gradient(180deg, rgba(2,0,36,1) 75%, 
 	rgba(11,44,80,1) 100%);
+
+$dawn-79:linear-gradient(180deg, rgba(2,0,36,1) 64%, 
+	rgba(11,46,82,1) 100%);
 
 $dawn-75: linear-gradient(180deg, rgba(2,0,36,1) 50%, 
 	rgba(12,52,87,1) 100%);
@@ -24,6 +35,7 @@ $dawn-30:linear-gradient(180deg, rgba(2,0,36,1) 0%,
 	rgba(255,199,79,1) 91%, 
 	rgba(231,123,30,1) 100%);
 
+//dawn-15 might be more dawn-10...we'll see
 $dawn-15: linear-gradient(180deg, rgba(6,10,99,1) 0%, 
 	rgba(0,50,122,1) 21%, 
 	rgba(62,119,149,1) 53%, 
@@ -36,3 +48,4 @@ $daybreak-0: linear-gradient(180deg, rgba(0,32,113,1) 0%,
 	rgba(98,168,204,1) 55%, 
 	rgba(236,169,64,1) 84%, 
 	rgba(255,199,79,1) 100%);
+

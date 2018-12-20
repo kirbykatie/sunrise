@@ -178,7 +178,7 @@ function stopTransition(gradient) {
 }
 
 //This is a temporary function for testing - it increases the minute of the test date so each run of getBkgd is incremented
-function tempFixDate(testDate) {
+function tempFixDate(testDate, i) {
   let mins = testDate.getMinutes();
   let hours = testDate.getHours();
   if (mins >= 59) {
@@ -189,7 +189,7 @@ function tempFixDate(testDate) {
       testDate.setHours(hours + 1);
     }
   } else {
-    testDate.setMinutes(mins + 15);
+    testDate.setMinutes(mins + i);
   }
   console.log('updated time is now ' + testDate);
   return testDate;
@@ -302,7 +302,7 @@ function testApp(id) {
     newBkgd = getBkgd(testDate, sunrise, sunset, allGradients);
     console.log(newBkgd);
     root.style.setProperty('--backgroundGradient', newBkgd);
-    testDate = tempFixDate(testDate);
+    testDate = tempFixDate(testDate, 1);
   }, 2000); //starting with 2 seconds
 }
 

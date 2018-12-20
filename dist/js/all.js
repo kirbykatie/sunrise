@@ -2,11 +2,11 @@
 //also i SUPER don't know what I'm doing lmao
 function canvasNight() {
   const canvas = document.querySelector("canvas");
-  //will need an event listener to resize if screen resizes
+  //will need an event listener to resize if screen resizes. However, resizing will erase all items on canvas 
   canvas.setAttribute("width", window.innerWidth);
   canvas.setAttribute("height", window.innerHeight);
 
-  
+
   const ctx = canvas.getContext('2d');
   const centerX = canvas.width / 2;
   const centerY = canvas.height /2;
@@ -26,10 +26,21 @@ function getColorData() {
 		dawn: {
 			//90: beginning of dawn
 			//0: sunrise
-			90: `linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(2,0,36,1) 100%)`,
+			90: `linear-gradient(180deg, rgba(2,0,36,1) 85%, rgba(4,23,46,1) 100%)`,
+			89: `linear-gradient(180deg, rgba(2,0,36,1) 84%, rgba(5,26,50,1) 100%)`,
+			88: `linear-gradient(180deg, rgba(2,0,36,1) 83%, rgba(6,28,55,1) 100%)`,
+			87: `linear-gradient(180deg, rgba(2,0,36,1) 81%, rgba(6,30,60,1) 100%)`,
+			86: `linear-gradient(180deg, rgba(2,0,36,1) 80%, rgba(7,33,64,1) 100%)`,
+			85: `linear-gradient(180deg, rgba(2,0,36,1) 78%, rgba(8,36,69,1) 100%)`,
+			84: `linear-gradient(180deg, rgba(2,0,36,1) 77%, rgba(10,40,74,1) 100%)`,
 			83: `linear-gradient(180deg, rgba(2,0,36,1) 75%, rgba(11,44,80,1) 100%)`, 
-			82: ``,
-			80: ``,
+			82: `linear-gradient(180deg, rgba(2,0,36,1) 72%, rgba(11,44,80,1) 100%)`,
+			81: `linear-gradient(180deg, rgba(2,0,36,1) 69%, rgba(11,45,81,1) 100%)`,
+			80: `linear-gradient(180deg, rgba(2,0,36,1) 67%, rgba(11,46,82,1) 100%)`,
+			79: `linear-gradient(180deg, rgba(2,0,36,1) 64%, rgba(11,47,85,1) 100%)`,
+			78: `linear-gradient(180deg, rgba(2,0,36,1) 61%, rgba(11,48,86,1) 100%)`,
+			77: `linear-gradient(180deg, rgba(2,0,36,1) 58%, rgba(11,49,86,1) 100%)`,
+			76: `linear-gradient(180deg, rgba(2,0,36,1) 55%, rgba(11,50,87,1) 100%)`,
 			75: `linear-gradient(180deg, rgba(2,0,36,1) 50%, rgba(12,52,87,1) 100%)`,
 			70: ``,
 			68: ``,
@@ -324,7 +335,7 @@ function stopTransition(gradient) {
 }
 
 //This is a temporary function for testing - it increases the minute of the test date so each run of getBkgd is incremented
-function tempFixDate(testDate) {
+function tempFixDate(testDate, i) {
   let mins = testDate.getMinutes();
   let hours = testDate.getHours();
   if (mins >= 59) {
@@ -335,7 +346,7 @@ function tempFixDate(testDate) {
       testDate.setHours(hours + 1);
     }
   } else {
-    testDate.setMinutes(mins + 15);
+    testDate.setMinutes(mins + i);
   }
   console.log('updated time is now ' + testDate);
   return testDate;
@@ -448,7 +459,7 @@ function testApp(id) {
     newBkgd = getBkgd(testDate, sunrise, sunset, allGradients);
     console.log(newBkgd);
     root.style.setProperty('--backgroundGradient', newBkgd);
-    testDate = tempFixDate(testDate);
+    testDate = tempFixDate(testDate, 1);
   }, 2000); //starting with 2 seconds
 }
 
