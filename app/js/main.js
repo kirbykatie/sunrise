@@ -294,8 +294,8 @@ function testApp(id) {
     testDate.setHours(18);
   } else if (id == "random") {
     console.log('not ready yet');
-    testDate.setHours(5);
-    testDate.setMinutes(45);
+    testDate.setHours(6);
+    testDate.setMinutes(15);
   }
   console.log(testDate);
   setInterval(function() {
