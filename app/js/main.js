@@ -303,7 +303,7 @@ function testApp(id) {
     console.log(newBkgd);
     root.style.setProperty('--backgroundGradient', newBkgd);
     testDate = tempFixDate(testDate, 1);
-  }, 2000); //starting with 2 seconds
+  }, 1000); //starting with 2 seconds
 }
 
 /*

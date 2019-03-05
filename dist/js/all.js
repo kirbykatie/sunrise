@@ -42,9 +42,18 @@ function getColorData() {
 			77: `linear-gradient(180deg, rgba(2,0,36,1) 58%, rgba(11,49,86,1) 100%)`,
 			76: `linear-gradient(180deg, rgba(2,0,36,1) 55%, rgba(11,50,87,1) 100%)`,
 			75: `linear-gradient(180deg, rgba(2,0,36,1) 50%, rgba(12,52,87,1) 100%)`,
-			70: ``,
-			68: ``,
-			67: ``,
+			74: `linear-gradient(180deg, rgba(2,0,36,1) 50%, rgba(12,52,87,1) 100%)`,
+			73: `linear-gradient(180deg, rgba(2,0,36,1) 50%, rgba(12,52,87,1) 96%, rgba(60,62,59,1) 100%)`,
+			72: `linear-gradient(180deg, rgba(2,0,36,1) 50%, rgba(12,52,87,1) 92%, rgba(64,60,60,1) 100%)`,
+			71: `linear-gradient(180deg, rgba(2,0,36,1) 49%, rgba(12,54,89,1) 88%, rgba(70,64,64,1) 100%)`,
+			70: `linear-gradient(180deg, rgba(2,0,36,1) 48%, rgba(12,58,90,1) 86%, rgba(69,64,59,1) 98%, rgba(100,54,10,1) 100%)`,
+			69: `linear-gradient(180deg, rgba(2,0,36,1) 47%, rgba(12,58,90,1) 84%, rgba(69,64,59,1) 97%, rgba(100,35,10,1) 100%)`,
+			68: `linear-gradient(180deg, rgba(2,0,36,1) 45%, rgba(12,58,90,1) 82%, rgba(69,64,59,1) 95%, rgba(103,37,11,1) 100%)`,
+			67: `linear-gradient(180deg, rgba(2,0,36,1) 45%, rgba(12,58,90,1) 80%, rgba(69,64,59,1) 94%, rgba(106,39,11,1) 100%)`,
+			66: ``,
+			65: ``,
+			64: `linear-gradient(180deg, rgba(2,0,36,1) 43%, rgba(14,60,98,1) 77%, rgba(75,67,59,1) 91%, rgba(126,45,13,1) 100%)`,
+			62: ``,
 			60: `linear-gradient(180deg, rgba(2,0,36,1) 40%, rgba(14,64,107,1) 74%, rgba(79,70,59,1) 87%, rgba(143,53,16,1) 100%)`,
 			53: ``,
 			52: ``,
@@ -460,7 +469,7 @@ function testApp(id) {
     console.log(newBkgd);
     root.style.setProperty('--backgroundGradient', newBkgd);
     testDate = tempFixDate(testDate, 1);
-  }, 2000); //starting with 2 seconds
+  }, 1000); //starting with 2 seconds
 }
 
 /*
