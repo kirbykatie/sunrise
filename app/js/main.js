@@ -1,6 +1,6 @@
 //import DarkSkyApi from 'dark-sky-api';
 
-import weather from './_weather';
+import {getWeather, renderWeather} from './_weather';
 import {renderDay, renderMonth } from './_date';
 import {timeToMins, numKeyToStrMap } from './_utility';
 import getColorData from './_data';
@@ -216,11 +216,10 @@ const btns = document.querySelectorAll("button").forEach(function(button){
   });
 })
 
-function testCallback(data) {
-  console.log('hello from the callback 2');
-  console.log(data);
+function weatherCallback(data) {
+  console.log('hello from the callback');
+  renderWeather(data);
 }
 
-
 //Commenting out avoid unnecessary calls
-//weather(testCallback);
+getWeather(weatherCallback);
