@@ -18,7 +18,8 @@ Removing Babel and Webpack for now as I just work with the Date obj. Will add ba
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.0.2",
     "gulp-sourcemaps": "^2.6.4",
-    "webpack-stream": "^5.2.1"
+    "webpack-stream": "^5.2.1",
+    "browser-sync": "^2.23.6"
   },
   "dependencies": {
     "dark-sky-api": "^0.6.32"

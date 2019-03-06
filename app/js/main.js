@@ -1,112 +1,9 @@
 //import DarkSkyApi from 'dark-sky-api';
-//import Chroma from 'chroma';
-//which im not using anymore LMAO
 
-/*
-Utility function that returns a string relating to the Date Obj's day of week
-@param - {numeral} Date Obj's day of week 
-@return - {string} Day name with comma and space at the end
-*/
-function renderDay(num) {
-  let day;
-  switch (num) {
-    case 0: 
-      day = `Sunday, `;
-      break;
-    case 1: 
-      day = `Monday, `;
-      break;
-    case 2: 
-      day = `Tuesday, `;
-      break;
-    case 3: 
-      day = `Wednesday, `;
-      break;
-    case 4: 
-      day = `Thursday, `;
-      break;
-    case 5: 
-      day = `Friday, `;
-      break;
-    case 6: 
-      day = `Saturday, `;
-      break;
-    default:
-      day = `Day, `;
-  }
-  return day;
-}
-
-/*
-Utility function that returns a string relating to the Date Obj's month
-@param - {numeral} Date Obj's month 
-@return - {string} Month name with space at the end
-*/
-function renderMonth(num) {
-  let month;
-  switch (num) {
-    case 0: 
-      month = `January `;
-      break;
-    case 1: 
-      month = `February `;
-      break;
-    case 2: 
-      month = `March `;
-      break;
-    case 3: 
-      month = `April `;
-      break;
-    case 4: 
-      month = `May `;
-      break;
-    case 5: 
-      month = `June `;
-      break;
-    case 6: 
-      month = `July `;
-      break;
-    case 7: 
-      month = `August `;
-      break;
-    case 8: 
-      month = `September `;
-      break;
-    case 9: 
-      month = `October `;
-      break;
-    case 10: 
-      month = `November `;
-      break;
-    case 11: 
-      month = `December `;
-      break;
-    default:
-      month = `Month `;
-  }
-  return month;
-}
-
-/*
-Utility function that returns the total minutes since midnight.
-@param - Date object
-@return - {numeral} value of total minutes of day
-*/
-function timeToMins(date) {
-  return (date.getHours() * 60) + date.getMinutes();
-}
-/*
-Utility function that takes an object that uses numeral keys and returns a map 
-Ensures the keys are actually numerals and not strings
-TO DO - add validation that only numeral keys are being added. For some reason if (Number(k) != NaN) doesn't work.
-*/
-function numKeyToStrMap(obj) {
-    let strMap = new Map();
-    for (let k in obj) {
-      strMap.set(Number(k), obj[k]);
-    }
-    return strMap;
-}
+import {getWeather, renderWeather} from './_weather';
+import {renderDay, renderMonth } from './_date';
+import {timeToMins, numKeyToStrMap } from './_utility';
+import getColorData from './_data';
 
 /*
 NOT BEING USED
@@ -134,22 +31,6 @@ function Color(r = 0, g = 0, b = 0, a = 1) {
 
 /*
 NOT BEING USED
-Creates an even gradient that is always 6 colors
-@param - {function} - Chroma.scale function with colors already defined
-@return - {string} - String of generated gradient ready to be used in CSS
-*/
-function generateGradientBkgd(scale) {
-  let returnedColor;  //receives the chroma color obj that is returned from scale()
-  let gradientStr = `linear-gradient(180deg, `; 
-  for (let i = 0; i <= 1; i += 0.2) {
-    returnedColor = scale(i);
-    gradientStr = gradientStr + `rgba(${Math.round(returnedColor._rgb[0])}, ${Math.round(returnedColor._rgb[1])}, ${Math.round(returnedColor._rgb[2])}, ${Math.round(returnedColor._rgb[3])}) ${Math.round(i*100)}%${i == 1 ? ')' : ','}`;
-  }
-  return gradientStr;
-}
-
-/*
-NOT BEING USED
 This is a temporary function that, when run, the background starts to change every 1 second 
 */
 function tempIncrementGradient(scale) {
@@ -162,20 +43,6 @@ function tempIncrementGradient(scale) {
   return scale;
 }
 
-//functions to try to smooth the transition. currently not working and not called anywhere. this is due to gradients not being able to transition in CSS atm.
-function startTransition(gradient) {
-  let body = document.body;
-  let root = document.documentElement;
-  root.style.setProperty('--backgroundGradientNew', gradient);
-  body.classList.add('transitioning');
-}
-
-function stopTransition(gradient) {
-  let body = document.body;
-  let root = document.documentElement;
-  root.style.setProperty('--backgroundGradient', gradient);
-  body.classList.remove('transitioning');
-}
 
 //This is a temporary function for testing - it increases the minute of the test date so each run of getBkgd is incremented
 function tempFixDate(testDate, i) {
@@ -349,4 +216,10 @@ const btns = document.querySelectorAll("button").forEach(function(button){
   });
 })
 
+function weatherCallback(data) {
+  console.log('hello from the callback');
+  renderWeather(data);
+}
 
+//Commenting out avoid unnecessary calls
+getWeather(weatherCallback);
