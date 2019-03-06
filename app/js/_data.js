@@ -1,4 +1,4 @@
-function getColorData() {
+export default function() {
 	const data = {
 		/*within each section is a map - key being a # which will be used to compare 
 		the current minute to/from sunrise/sunset and the value being what is returned 
@@ -58,7 +58,6 @@ function getColorData() {
 			0: `linear-gradient(180deg, rgba(0,32,113,1) 0%, rgba(24,74,143,1) 21%, rgba(98,168,204,1) 55%, rgba(236,169,64,1) 84%, rgba(255,199,79,1) 100%)`
 			//0: sunrise
 			//90: day
-
 		},
 		sunsetting: {
 			//0: beginning of sunset
