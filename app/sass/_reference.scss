@@ -1,3 +1,5 @@
+//get GutterColor package
+
 $night: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(2,0,36,1) 100%);
 $dawn-90: linear-gradient(180deg, rgba(2,0,36,1) 85%, 
 	rgba(4,23,46,1) 100%);
@@ -51,9 +53,43 @@ $dawn-60: linear-gradient(180deg, rgba(2,0,36,1) 40%,
 
 $dawn-45: linear-gradient(180deg, rgba(2,0,36,1) 20%, 
 	rgba(14,64,107,1) 71%, 
-	rgba(90,108,103,1) 82%, 
+	rgba(90,95,103,1) 82%, 
 	rgba(255,181,79,1) 92%, 
 	rgba(231,89,30,1) 100%);
+
+$dawn-42: linear-gradient(180deg, rgba(2,0,36,1) 16%, 
+	rgba(20,50,100,1) 60%, 
+	rgba(65,100,120,1) 80%, 
+	rgba(255,181,79,1) 91%, 
+	rgba(231,99,30,1) 100%);
+
+$dawn-40: linear-gradient(180deg, rgba(2,0,36,1) 13%, 
+	rgba(12,35,85,1) 37%, 
+	rgba(25,60,100,1) 60%, 
+	rgba(80,112,125,1) 80%, 
+	rgba(255,181,79,1) 91%, 
+	rgba(231,102,30,1) 100%);
+
+$dawn-38: linear-gradient(180deg, rgba(2,0,36,1) 10%, 
+	 rgba(10,40,100,1) 40%,
+	rgba(45,90,110,1) 69%, 
+	rgba(95,125,130,1) 80%, 
+	rgba(255,181,79,1) 91%, 
+	rgba(231,106,30,1) 100%);
+
+$dawn-36: linear-gradient(180deg, rgba(2,0,36,1) 4%, 
+	rgba(2,30,109,1) 36%, 
+	rgba(48,96,120,1) 65%, 
+	rgba(102,132,132,1) 79%, 
+	rgba(255,190,79,1) 91%, 
+	rgba(231,114,30,1) 100%);
+
+$dawn-34: linear-gradient(180deg, rgba(2,0,36,1) 4%, 
+	rgba(2,30,109,1) 36%, 
+	rgba(48,96,120,1) 65%, 
+	rgba(102,132,132,1) 79%, 
+	rgba(255,190,79,1) 91%, 
+	rgba(231,114,30,1) 100%);
 
 $dawn-30:linear-gradient(180deg, rgba(2,0,36,1) 0%, 
 	rgba(0,32,113,1) 33%, 
