@@ -72,7 +72,7 @@ export function renderWeather(data) {
   if (data.currently) {
     currentlyContainer.innerHTML = `
       <div class="currently__icon">
-        <img src="img/${data.currently.icon}.png alt="${data.currently.icon}">
+        <img src="img/${data.currently.icon}.png" alt=${data.currently.icon}>
       </div>
       <div class="currently__content">
         <p class="currently__temp">${Math.round(data.currently.temperature)}&deg;</p>

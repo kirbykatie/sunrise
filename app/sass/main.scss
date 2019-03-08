@@ -18,7 +18,10 @@ background: linear-gradient(180deg, rgba(1,29,112,1) 0%, rgba(47,89,129,1) 27%, 
 /*High Noon
  background: background: linear-gradient(180deg, rgba(34,121,177,1) 0%, rgba(101,202,238,1) 100%); 
 */
-
+h1, h2, h3, h4, h5, h6, p, a {
+	margin:0;
+	padding:0;
+}
 
 body {
 	margin: 0;
@@ -47,7 +50,6 @@ canvas {
 	width: 100vw;
 	height: 100vh;
 	position:absolute;
-	z-index:1;
 }
 
 .time, .date, p {
@@ -68,11 +70,26 @@ canvas {
 	margin-top: -10px;
 }
 
+.test-container {
+	margin: 10px 0;
+	text-align: center;
+}
+
 .weather-container {
 	margin-top: 30px;
 }
 
-.currently__temp {
+.currently-container {
+	display:flex;
+	align-items:center;
+}
 
-	font-size: 36px;
+.currently__temp {
+	font-size: 30px;
+}
+
+.currently__icon img {
+	display:inline-block;
+	width:50px;
+	margin-right:10px;
 }

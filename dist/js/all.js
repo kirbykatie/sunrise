@@ -1,104 +1,87 @@
-Skip to content
- 
-Search or jump to…
-
-Pull requests
-Issues
-Marketplace
-Explore
- @kirbykatie Sign out
-0
-0 0 kirbykatie/sunrise
- Code  Issues 0  Pull requests 0  Projects 0  Wiki  Insights  Settings
-sunrise/dist/js/all.js
-@kirbykatie kirbykatie Initial commit to new branch
-cf46e43  3 hours ago
-Executable File  171 lines (149 sloc)  26.7 KB
-    
 /******/ (function(modules) { // webpackBootstrap
-/******/  // The module cache
-/******/  var installedModules = {};
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
 /******/
-/******/  // The require function
-/******/  function __webpack_require__(moduleId) {
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
 /******/
-/******/    // Check if module is in cache
-/******/    if(installedModules[moduleId]) {
-/******/      return installedModules[moduleId].exports;
-/******/    }
-/******/    // Create a new module (and put it into the cache)
-/******/    var module = installedModules[moduleId] = {
-/******/      i: moduleId,
-/******/      l: false,
-/******/      exports: {}
-/******/    };
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
 /******/
-/******/    // Execute the module function
-/******/    modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
 /******/
-/******/    // Flag the module as loaded
-/******/    module.l = true;
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
 /******/
-/******/    // Return the exports of the module
-/******/    return module.exports;
-/******/  }
-/******/
-/******/
-/******/  // expose the modules object (__webpack_modules__)
-/******/  __webpack_require__.m = modules;
-/******/
-/******/  // expose the module cache
-/******/  __webpack_require__.c = installedModules;
-/******/
-/******/  // define getter function for harmony exports
-/******/  __webpack_require__.d = function(exports, name, getter) {
-/******/    if(!__webpack_require__.o(exports, name)) {
-/******/      Object.defineProperty(exports, name, { enumerable: true, get: getter });
-/******/    }
-/******/  };
-/******/
-/******/  // define __esModule on exports
-/******/  __webpack_require__.r = function(exports) {
-/******/    if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/      Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/    }
-/******/    Object.defineProperty(exports, '__esModule', { value: true });
-/******/  };
-/******/
-/******/  // create a fake namespace object
-/******/  // mode & 1: value is a module id, require it
-/******/  // mode & 2: merge all properties of value into the ns
-/******/  // mode & 4: return value when already ns object
-/******/  // mode & 8|1: behave like require
-/******/  __webpack_require__.t = function(value, mode) {
-/******/    if(mode & 1) value = __webpack_require__(value);
-/******/    if(mode & 8) return value;
-/******/    if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
-/******/    var ns = Object.create(null);
-/******/    __webpack_require__.r(ns);
-/******/    Object.defineProperty(ns, 'default', { enumerable: true, value: value });
-/******/    if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
-/******/    return ns;
-/******/  };
-/******/
-/******/  // getDefaultExport function for compatibility with non-harmony modules
-/******/  __webpack_require__.n = function(module) {
-/******/    var getter = module && module.__esModule ?
-/******/      function getDefault() { return module['default']; } :
-/******/      function getModuleExports() { return module; };
-/******/    __webpack_require__.d(getter, 'a', getter);
-/******/    return getter;
-/******/  };
-/******/
-/******/  // Object.prototype.hasOwnProperty.call
-/******/  __webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
-/******/
-/******/  // __webpack_public_path__
-/******/  __webpack_require__.p = "";
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
 /******/
 /******/
-/******/  // Load entry module and return exports
-/******/  return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -122,7 +105,7 @@ eval("//This is the beginning of all the canvas animations functions\n//also i S
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = (function() {\n\tconst data = {\n\t\t/*within each section is a map - key being a # which will be used to compare \n\t\tthe current minute to/from sunrise/sunset and the value being what is returned \n\t\tfor the app to use to create the gradient.*/\n\t\tdawn: {\n\t\t\t//90: beginning of dawn\n\t\t\t//0: sunrise\n\t\t\t90: `linear-gradient(180deg, rgba(2,0,36,1) 85%, rgba(4,23,46,1) 100%)`,\n\t\t\t89: `linear-gradient(180deg, rgba(2,0,36,1) 84%, rgba(5,26,50,1) 100%)`,\n\t\t\t88: `linear-gradient(180deg, rgba(2,0,36,1) 83%, rgba(6,28,55,1) 100%)`,\n\t\t\t87: `linear-gradient(180deg, rgba(2,0,36,1) 81%, rgba(6,30,60,1) 100%)`,\n\t\t\t86: `linear-gradient(180deg, rgba(2,0,36,1) 80%, rgba(7,33,64,1) 100%)`,\n\t\t\t85: `linear-gradient(180deg, rgba(2,0,36,1) 78%, rgba(8,36,69,1) 100%)`,\n\t\t\t84: `linear-gradient(180deg, rgba(2,0,36,1) 77%, rgba(10,40,74,1) 100%)`,\n\t\t\t83: `linear-gradient(180deg, rgba(2,0,36,1) 75%, rgba(11,44,80,1) 100%)`, \n\t\t\t82: `linear-gradient(180deg, rgba(2,0,36,1) 72%, rgba(11,44,80,1) 100%)`,\n\t\t\t81: `linear-gradient(180deg, rgba(2,0,36,1) 69%, rgba(11,45,81,1) 100%)`,\n\t\t\t80: `linear-gradient(180deg, rgba(2,0,36,1) 67%, rgba(11,46,82,1) 100%)`,\n\t\t\t79: `linear-gradient(180deg, rgba(2,0,36,1) 64%, rgba(11,47,85,1) 100%)`,\n\t\t\t78: `linear-gradient(180deg, rgba(2,0,36,1) 61%, rgba(11,48,86,1) 100%)`,\n\t\t\t77: `linear-gradient(180deg, rgba(2,0,36,1) 58%, rgba(11,49,86,1) 100%)`,\n\t\t\t76: `linear-gradient(180deg, rgba(2,0,36,1) 55%, rgba(11,50,87,1) 100%)`,\n\t\t\t75: `linear-gradient(180deg, rgba(2,0,36,1) 50%, rgba(12,52,87,1) 100%)`,\n\t\t\t70: ``,\n\t\t\t68: ``,\n\t\t\t67: ``,\n\t\t\t60: `linear-gradient(180deg, rgba(2,0,36,1) 40%, rgba(14,64,107,1) 74%, rgba(79,70,59,1) 87%, rgba(143,53,16,1) 100%)`,\n\t\t\t53: ``,\n\t\t\t52: ``,\n\t\t\t50: ``,\n\t\t\t45: `linear-gradient(180deg, rgba(2,0,36,1) 20%, rgba(14,64,107,1) 71%, rgba(80,90,103,1) 82%, rgba(255,181,79,1) 92%, rgba(231,89,30,1) 100%)`,\n\t\t\t44: `linear-gradient(180deg, rgba(2,0,36,1) 19%, rgba(16,61,105,1) 67%, rgba(75,92,108,1) 82%, rgba(255,181,79,1) 91%, rgba(231,92,30,1) 100%)`,\n\t\t\t43: `linear-gradient(180deg, rgba(2,0,36,1) 17%, rgba(20,55,103,1) 64%, rgba(70,94,114,1) 81%, rgba(255,181,79,1) 91%, rgba(231,96,30,1) 100%)`,\n\t\t\t42: `linear-gradient(180deg, rgba(2,0,36,1) 16%, rgba(20,50,100,1) 60%, rgba(65,100,120,1) 80%, rgba(255,181,79,1) 91%, rgba(231,99,30,1) 100%)`,\n\t\t\t41: `linear-gradient(180deg, rgba(2,0,36,1) 15%, rgba(12,31,78,1) 40%, rgba(22,55,100,1) 60%, rgba(77,103,123,1) 80%, rgba(255,181,79,1) 91%, rgba(231,100,30,1) 100%)`,\n\t\t\t40: `linear-gradient(180deg, rgba(2,0,36,1) 13%, rgba(12,35,85,1) 37%, rgba(25,60,100,1) 60%, rgba(80,110,125,1) 80%, rgba(255,181,79,1) 91%, rgba(231,102,30,1) 100%)`,\n\t\t\t39: `linear-gradient(180deg, rgba(2,0,36,1) 12%, rgba(11,37,92,1) 38%, rgba(30,70,105,1) 64%, rgba(88,120,130,1) 80%, rgba(255,181,79,1) 91%, rgba(231,104,30,1) 100%)`,\n\t\t\t38: `linear-gradient(180deg, rgba(2,0,36,1) 10%, rgba(10,40,100,1) 40%, rgba(45,90,110,1) 69%, rgba(95,125,130,1) 80%, rgba(255,181,79,1) 91%, rgba(231,106,30,1) 100%)`,\n\t\t\t37: `linear-gradient(180deg, rgba(2,0,36,1) 9%, rgba(4,36,108,1) 39%, rgba(46,91,113,1) 68%, rgba(97,127,130,1) 80%, rgba(255,182,79,1) 91%, rgba(231,108,30,1) 100%)`,\n\t\t\t36: `linear-gradient(180deg, rgba(2,0,36,1) 7%, rgba(2,34,111,1) 38%, rgba(47,93,115,1) 67%, rgba(99,128,131,1) 80%, rgba(255,184,79,1) 91%, rgba(231,110,30,1) 100%)`,\n\t\t\t35: `linear-gradient(180deg, rgba(2,0,36,1) 5%, rgba(2,32,110,1) 37%, rgba(48,95,117,1) 66%, rgba(100,130,130,1) 80%, rgba(255,187,79,1) 91%, rgba(231,112,30,1) 100%)`,\n\t\t\t34: `linear-gradient(180deg, rgba(2,0,36,1) 4%, rgba(2,30,109,1) 36%, rgba(48,96,120,1) 65%, rgba(102,132,132,1) 79%, rgba(255,190,79,1) 91%, rgba(231,114,30,1) 100%)`,\n\t\t\t33: `linear-gradient(180deg, rgba(2,0,36,1) 3%, rgba(1,31,110,1) 35%, rgba(49,98,126,1) 64%, rgba(108,138,134,1) 79%, rgba(255,193,79,1) 91%, rgba(231,112,30,1) 100%)`,\n\t\t\t32: `linear-gradient(180deg, rgba(2,0,36,1) 2%, rgba(1,31,111,1) 34%, rgba(50,100,130,1) 62%, rgba(115,143,139,1) 78%, rgba(255,195,79,1) 91%, rgba(231,118,30,1) 100%)`,\n\t\t\t31: `linear-gradient(180deg, rgba(2,0,36,1) 1%, rgba(0,32,112,1) 34%, rgba(50,102,130,1) 61%, rgba(122,148,143,1) 77%, rgba(255,199,79,1) 91%, rgba(231,120,30,1) 100%)`,\n\t\t\t30: `linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(0,32,113,1) 33%, rgba(51,103,139,1) 60%, rgba(129,154,146,1) 77%, rgba(255,199,79,1) 91%, rgba(231,123,30,1) 100%)`,\n\t\t\t23: ``,\n\t\t\t22: ``,\n\t\t\t20: ``,\n\t\t\t15: `linear-gradient(180deg, rgba(6,10,99,1) 0%, rgba(0,50,122,1) 21%, rgba(62,119,149,1) 53%, rgba(150,170,163,1) 75%, rgba(255,199,79,1) 86%, rgba(241,170,86,1) 100%)`,\n\t\t\t10: ``,\n\t\t\t8: ``,\n\t\t\t7: ``,\n\t\t\t1: `linear-gradient(180deg, rgba(0,32,113,1) 0%, rgba(24,74,143,1) 21%, rgba(98,168,204,1) 55%, rgba(236,169,64,1) 84%, rgba(255,199,79,1) 100%)`\n\t\t},\n\t\tdaybreak: {\n\t\t\t0: `linear-gradient(180deg, rgba(0,32,113,1) 0%, rgba(24,74,143,1) 21%, rgba(98,168,204,1) 55%, rgba(236,169,64,1) 84%, rgba(255,199,79,1) 100%)`\n\t\t\t//0: sunrise\n\t\t\t//90: day\n\t\t},\n\t\tsunsetting: {\n\t\t\t//0: beginning of sunset\n\t\t\t//90: actual technical sunset\n\t\t},\n\t\tdusk: {\n\t\t\t//0: sunset\n\t\t\t//90: end of dusk\n\t\t}\n\t};\n\treturn data;\n});\n\n//# sourceURL=webpack:///./app/js/_data.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = (function() {\n\tconst data = {\n\t\t/*within each section is a map - key being a # which will be used to compare \n\t\tthe current minute to/from sunrise/sunset and the value being what is returned \n\t\tfor the app to use to create the gradient.*/\n\t\tdawn: {\n\t\t\t//90: beginning of dawn\n\t\t\t//0: sunrise\n\t\t\t90: `linear-gradient(180deg, rgba(2,0,36,1) 85%, rgba(4,23,46,1) 100%)`,\n\t\t\t89: `linear-gradient(180deg, rgba(2,0,36,1) 84%, rgba(5,26,50,1) 100%)`,\n\t\t\t88: `linear-gradient(180deg, rgba(2,0,36,1) 83%, rgba(6,28,55,1) 100%)`,\n\t\t\t87: `linear-gradient(180deg, rgba(2,0,36,1) 81%, rgba(6,30,60,1) 100%)`,\n\t\t\t86: `linear-gradient(180deg, rgba(2,0,36,1) 80%, rgba(7,33,64,1) 100%)`,\n\t\t\t85: `linear-gradient(180deg, rgba(2,0,36,1) 78%, rgba(8,36,69,1) 100%)`,\n\t\t\t84: `linear-gradient(180deg, rgba(2,0,36,1) 77%, rgba(10,40,74,1) 100%)`,\n\t\t\t83: `linear-gradient(180deg, rgba(2,0,36,1) 75%, rgba(11,44,80,1) 100%)`, \n\t\t\t82: `linear-gradient(180deg, rgba(2,0,36,1) 72%, rgba(11,44,80,1) 100%)`,\n\t\t\t81: `linear-gradient(180deg, rgba(2,0,36,1) 69%, rgba(11,45,81,1) 100%)`,\n\t\t\t80: `linear-gradient(180deg, rgba(2,0,36,1) 67%, rgba(11,46,82,1) 100%)`,\n\t\t\t79: `linear-gradient(180deg, rgba(2,0,36,1) 64%, rgba(11,47,85,1) 100%)`,\n\t\t\t78: `linear-gradient(180deg, rgba(2,0,36,1) 61%, rgba(11,48,86,1) 100%)`,\n\t\t\t77: `linear-gradient(180deg, rgba(2,0,36,1) 58%, rgba(11,49,86,1) 100%)`,\n\t\t\t76: `linear-gradient(180deg, rgba(2,0,36,1) 55%, rgba(11,50,87,1) 100%)`,\n\t\t\t75: `linear-gradient(180deg, rgba(2,0,36,1) 50%, rgba(12,52,87,1) 100%)`,\n\t\t\t74: `linear-gradient(180deg, rgba(2,0,36,1) 50%, rgba(12,52,87,1) 100%)`,\n\t\t\t73: `linear-gradient(180deg, rgba(2,0,36,1) 50%, rgba(12,52,87,1) 96%, rgba(60,62,59,1) 100%)`,\n\t\t\t72: `linear-gradient(180deg, rgba(2,0,36,1) 50%, rgba(12,52,87,1) 92%, rgba(64,60,60,1) 100%)`,\n\t\t\t71: `linear-gradient(180deg, rgba(2,0,36,1) 49%, rgba(12,54,89,1) 88%, rgba(70,64,64,1) 100%)`,\n\t\t\t70: `linear-gradient(180deg, rgba(2,0,36,1) 48%, rgba(12,58,90,1) 86%, rgba(69,64,59,1) 98%, rgba(100,54,10,1) 100%)`,\n\t\t\t69: `linear-gradient(180deg, rgba(2,0,36,1) 47%, rgba(12,58,90,1) 84%, rgba(69,64,59,1) 97%, rgba(100,35,10,1) 100%)`,\n\t\t\t68: `linear-gradient(180deg, rgba(2,0,36,1) 45%, rgba(12,58,90,1) 82%, rgba(69,64,59,1) 95%, rgba(103,37,11,1) 100%)`,\n\t\t\t67: `linear-gradient(180deg, rgba(2,0,36,1) 45%, rgba(12,58,90,1) 80%, rgba(69,64,59,1) 94%, rgba(106,39,11,1) 100%)`,\n\t\t\t66: ``,\n\t\t\t65: ``,\n\t\t\t64: `linear-gradient(180deg, rgba(2,0,36,1) 43%, rgba(14,60,98,1) 77%, rgba(75,67,59,1) 91%, rgba(126,45,13,1) 100%)`,\n\t\t\t62: ``,\n\t\t\t60: `linear-gradient(180deg, rgba(2,0,36,1) 40%, rgba(14,64,107,1) 74%, rgba(79,70,59,1) 87%, rgba(143,53,16,1) 100%)`,\n\t\t\t53: ``,\n\t\t\t52: ``,\n\t\t\t50: ``,\n\t\t\t45: `linear-gradient(180deg, rgba(2,0,36,1) 20%, rgba(14,64,107,1) 71%, rgba(80,90,103,1) 82%, rgba(255,181,79,1) 92%, rgba(231,89,30,1) 100%)`,\n\t\t\t44: `linear-gradient(180deg, rgba(2,0,36,1) 19%, rgba(16,61,105,1) 67%, rgba(75,92,108,1) 82%, rgba(255,181,79,1) 91%, rgba(231,92,30,1) 100%)`,\n\t\t\t43: `linear-gradient(180deg, rgba(2,0,36,1) 17%, rgba(20,55,103,1) 64%, rgba(70,94,114,1) 81%, rgba(255,181,79,1) 91%, rgba(231,96,30,1) 100%)`,\n\t\t\t42: `linear-gradient(180deg, rgba(2,0,36,1) 16%, rgba(20,50,100,1) 60%, rgba(65,100,120,1) 80%, rgba(255,181,79,1) 91%, rgba(231,99,30,1) 100%)`,\n\t\t\t41: `linear-gradient(180deg, rgba(2,0,36,1) 15%, rgba(12,31,78,1) 40%, rgba(22,55,100,1) 60%, rgba(77,103,123,1) 80%, rgba(255,181,79,1) 91%, rgba(231,100,30,1) 100%)`,\n\t\t\t40: `linear-gradient(180deg, rgba(2,0,36,1) 13%, rgba(12,35,85,1) 37%, rgba(25,60,100,1) 60%, rgba(80,110,125,1) 80%, rgba(255,181,79,1) 91%, rgba(231,102,30,1) 100%)`,\n\t\t\t39: `linear-gradient(180deg, rgba(2,0,36,1) 12%, rgba(11,37,92,1) 38%, rgba(30,70,105,1) 64%, rgba(88,120,130,1) 80%, rgba(255,181,79,1) 91%, rgba(231,104,30,1) 100%)`,\n\t\t\t38: `linear-gradient(180deg, rgba(2,0,36,1) 10%, rgba(10,40,100,1) 40%, rgba(45,90,110,1) 69%, rgba(95,125,130,1) 80%, rgba(255,181,79,1) 91%, rgba(231,106,30,1) 100%)`,\n\t\t\t37: `linear-gradient(180deg, rgba(2,0,36,1) 9%, rgba(4,36,108,1) 39%, rgba(46,91,113,1) 68%, rgba(97,127,130,1) 80%, rgba(255,182,79,1) 91%, rgba(231,108,30,1) 100%)`,\n\t\t\t36: `linear-gradient(180deg, rgba(2,0,36,1) 7%, rgba(2,34,111,1) 38%, rgba(47,93,115,1) 67%, rgba(99,128,131,1) 80%, rgba(255,184,79,1) 91%, rgba(231,110,30,1) 100%)`,\n\t\t\t35: `linear-gradient(180deg, rgba(2,0,36,1) 5%, rgba(2,32,110,1) 37%, rgba(48,95,117,1) 66%, rgba(100,130,130,1) 80%, rgba(255,187,79,1) 91%, rgba(231,112,30,1) 100%)`,\n\t\t\t34: `linear-gradient(180deg, rgba(2,0,36,1) 4%, rgba(2,30,109,1) 36%, rgba(48,96,120,1) 65%, rgba(102,132,132,1) 79%, rgba(255,190,79,1) 91%, rgba(231,114,30,1) 100%)`,\n\t\t\t33: `linear-gradient(180deg, rgba(2,0,36,1) 3%, rgba(1,31,110,1) 35%, rgba(49,98,126,1) 64%, rgba(108,138,134,1) 79%, rgba(255,193,79,1) 91%, rgba(231,112,30,1) 100%)`,\n\t\t\t32: `linear-gradient(180deg, rgba(2,0,36,1) 2%, rgba(1,31,111,1) 34%, rgba(50,100,130,1) 62%, rgba(115,143,139,1) 78%, rgba(255,195,79,1) 91%, rgba(231,118,30,1) 100%)`,\n\t\t\t31: `linear-gradient(180deg, rgba(2,0,36,1) 1%, rgba(0,32,112,1) 34%, rgba(50,102,130,1) 61%, rgba(122,148,143,1) 77%, rgba(255,199,79,1) 91%, rgba(231,120,30,1) 100%)`,\n\t\t\t30: `linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(0,32,113,1) 33%, rgba(51,103,139,1) 60%, rgba(129,154,146,1) 77%, rgba(255,199,79,1) 91%, rgba(231,123,30,1) 100%)`,\n\t\t\t23: ``,\n\t\t\t22: ``,\n\t\t\t20: ``,\n\t\t\t15: `linear-gradient(180deg, rgba(6,10,99,1) 0%, rgba(0,50,122,1) 21%, rgba(62,119,149,1) 53%, rgba(150,170,163,1) 75%, rgba(255,199,79,1) 86%, rgba(241,170,86,1) 100%)`,\n\t\t\t10: ``,\n\t\t\t8: ``,\n\t\t\t7: ``,\n\t\t\t1: `linear-gradient(180deg, rgba(0,32,113,1) 0%, rgba(24,74,143,1) 21%, rgba(98,168,204,1) 55%, rgba(236,169,64,1) 84%, rgba(255,199,79,1) 100%)`\n\t\t},\n\t\tdaybreak: {\n\t\t\t0: `linear-gradient(180deg, rgba(0,32,113,1) 0%, rgba(24,74,143,1) 21%, rgba(98,168,204,1) 55%, rgba(236,169,64,1) 84%, rgba(255,199,79,1) 100%)`\n\t\t\t//0: sunrise\n\t\t\t//90: day\n\t\t},\n\t\tsunsetting: {\n\t\t\t//0: beginning of sunset\n\t\t\t//90: actual technical sunset\n\t\t},\n\t\tdusk: {\n\t\t\t//0: sunset\n\t\t\t//90: end of dusk\n\t\t}\n\t};\n\treturn data;\n});\n\n//# sourceURL=webpack:///./app/js/_data.js?");
 
 /***/ }),
 
@@ -158,7 +141,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"getWeather\", function() { return getWeather; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"renderWeather\", function() { return renderWeather; });\n//WIP - moving from main to focus on date & colors first before messing with APIs\n\nfunction getWeather(callback) {\n  //Temp workaround to deal with CORS - handles the CORS request for me. This can't be used in prod\n  const corsAPI = 'https://cors-anywhere.herokuapp.com/'\n  const position = {\n    latitude: 38.609569, \n    longitude: -90.253537\n  };\n  const key = '4121a5412959db9720a7056d374df8e3';\n  const requestURL = `${corsAPI}https://api.darksky.net/forecast/${key}/${position.latitude},${position.longitude}?exclude=['alerts','flags']`;\n\n\n  const request = new XMLHttpRequest();\n  request.open('GET', requestURL, true);\n    request.onreadystatechange = function() {\n      if (this.readyState === 4) {\n        if (this.status >= 200 && this.status < 400) {\n          let data; \n          data = JSON.parse(this.responseText);\n          // Pass the data to the provided callback function\n          callback(data);\n\n        } else { // Handle any errors\n          console.warn('Error getting requested data');\n        }\n      }\n    };\n\n    request.send();\n}\n//Original using the Dark Sky API and will need to use fetch and promises:\n/*function getWeather() {\n  let data = \"hey\";\n  const position = {\n    latitude: 38.609569, \n    longitude: -90.253537\n  };\n\n  DarkSkyApi.apiKey = '4121a5412959db9720a7056d374df8e3';\n  data = DarkSkyApi.loadItAll(\"alerts\", position)\n    .then(result => {\n      console.log(result);\n    });\n  //.then is a function for a Promise. I need to learn promises and how to return data asychnonisly before I can continue\n  return data;\n}*/\n\n/*Try this: \nfunction timeConverter(UNIX_timestamp){\n  var a = new Date(UNIX_timestamp * 1000);\n  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];\n  var year = a.getFullYear();\n  var month = months[a.getMonth()];\n  var date = a.getDate();\n  var hour = a.getHours();\n  var min = a.getMinutes();\n  var sec = a.getSeconds();\n  var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;\n  return time;\n}\nconsole.log(timeConverter(0));\nSource: https://stackoverflow.com/questions/847185/convert-a-unix-timestamp-to-time-in-javascript\n*/ \n\nfunction renderWeather(data) {\n  console.log(data);\n\n  const weatherContainer = document.querySelector('.weather-container');\n  const currentlyContainer = weatherContainer.querySelector('.currently-container');\n  const dailyContainer = weatherContainer.querySelector('.daily-container');\n  if (data.currently) {\n    currentlyContainer.innerHTML = `\n      <div class=\"currently__icon\">\n        <img src=\"img/${data.currently.icon}.png alt=\"${data.currently.icon}\">\n      </div>\n      <div class=\"currently__content\">\n        <p class=\"currently__temp\">${Math.round(data.currently.temperature)}&deg;</p>\n      </div>\n    `;\n  } //else remove currently container?\n  if (data.daily) {\n    dailyContainer.innerHTML = `\n      \n    `;\n  }\n}\n\n/*\nImages needed: clear-day, clear-night, rain, snow, sleet, wind, fog, cloudy, partly-cloudy-day, or partly-cloudy-night, default\n*/\n\n//# sourceURL=webpack:///./app/js/_weather.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"getWeather\", function() { return getWeather; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"renderWeather\", function() { return renderWeather; });\n//WIP - moving from main to focus on date & colors first before messing with APIs\n\nfunction getWeather(callback) {\n  //Temp workaround to deal with CORS - handles the CORS request for me. This can't be used in prod\n  const corsAPI = 'https://cors-anywhere.herokuapp.com/'\n  const position = {\n    latitude: 38.609569, \n    longitude: -90.253537\n  };\n  const key = '4121a5412959db9720a7056d374df8e3';\n  const requestURL = `${corsAPI}https://api.darksky.net/forecast/${key}/${position.latitude},${position.longitude}?exclude=['alerts','flags']`;\n\n\n  const request = new XMLHttpRequest();\n  request.open('GET', requestURL, true);\n    request.onreadystatechange = function() {\n      if (this.readyState === 4) {\n        if (this.status >= 200 && this.status < 400) {\n          let data; \n          data = JSON.parse(this.responseText);\n          // Pass the data to the provided callback function\n          callback(data);\n\n        } else { // Handle any errors\n          console.warn('Error getting requested data');\n        }\n      }\n    };\n\n    request.send();\n}\n//Original using the Dark Sky API and will need to use fetch and promises:\n/*function getWeather() {\n  let data = \"hey\";\n  const position = {\n    latitude: 38.609569, \n    longitude: -90.253537\n  };\n\n  DarkSkyApi.apiKey = '4121a5412959db9720a7056d374df8e3';\n  data = DarkSkyApi.loadItAll(\"alerts\", position)\n    .then(result => {\n      console.log(result);\n    });\n  //.then is a function for a Promise. I need to learn promises and how to return data asychnonisly before I can continue\n  return data;\n}*/\n\n/*Try this: \nfunction timeConverter(UNIX_timestamp){\n  var a = new Date(UNIX_timestamp * 1000);\n  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];\n  var year = a.getFullYear();\n  var month = months[a.getMonth()];\n  var date = a.getDate();\n  var hour = a.getHours();\n  var min = a.getMinutes();\n  var sec = a.getSeconds();\n  var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;\n  return time;\n}\nconsole.log(timeConverter(0));\nSource: https://stackoverflow.com/questions/847185/convert-a-unix-timestamp-to-time-in-javascript\n*/ \n\nfunction renderWeather(data) {\n  console.log(data);\n\n  const weatherContainer = document.querySelector('.weather-container');\n  const currentlyContainer = weatherContainer.querySelector('.currently-container');\n  const dailyContainer = weatherContainer.querySelector('.daily-container');\n  if (data.currently) {\n    currentlyContainer.innerHTML = `\n      <div class=\"currently__icon\">\n        <img src=\"img/${data.currently.icon}.png\" alt=${data.currently.icon}>\n      </div>\n      <div class=\"currently__content\">\n        <p class=\"currently__temp\">${Math.round(data.currently.temperature)}&deg;</p>\n      </div>\n    `;\n  } //else remove currently container?\n  if (data.daily) {\n    dailyContainer.innerHTML = `\n      \n    `;\n  }\n}\n\n/*\nImages needed: clear-day, clear-night, rain, snow, sleet, wind, fog, cloudy, partly-cloudy-day, or partly-cloudy-night, default\n*/\n\n//# sourceURL=webpack:///./app/js/_weather.js?");
 
 /***/ }),
 
@@ -181,21 +164,8 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _wea
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("__webpack_require__(/*! /Users/blackska/Documents/GitHub/sunrise/app/js/_canvas-anim.js */\"./app/js/_canvas-anim.js\");\n__webpack_require__(/*! /Users/blackska/Documents/GitHub/sunrise/app/js/_data.js */\"./app/js/_data.js\");\n__webpack_require__(/*! /Users/blackska/Documents/GitHub/sunrise/app/js/_date.js */\"./app/js/_date.js\");\n__webpack_require__(/*! /Users/blackska/Documents/GitHub/sunrise/app/js/_utility.js */\"./app/js/_utility.js\");\n__webpack_require__(/*! /Users/blackska/Documents/GitHub/sunrise/app/js/_weather.js */\"./app/js/_weather.js\");\nmodule.exports = __webpack_require__(/*! /Users/blackska/Documents/GitHub/sunrise/app/js/main.js */\"./app/js/main.js\");\n\n\n//# sourceURL=webpack:///multi_./app/js/_canvas-anim.js_./app/js/_data.js_./app/js/_date.js_./app/js/_utility.js_./app/js/_weather.js_./app/js/main.js?");
+eval("__webpack_require__(/*! /Users/katierblackstone/Documents/GitHub/sunrise/app/js/_canvas-anim.js */\"./app/js/_canvas-anim.js\");\n__webpack_require__(/*! /Users/katierblackstone/Documents/GitHub/sunrise/app/js/_data.js */\"./app/js/_data.js\");\n__webpack_require__(/*! /Users/katierblackstone/Documents/GitHub/sunrise/app/js/_date.js */\"./app/js/_date.js\");\n__webpack_require__(/*! /Users/katierblackstone/Documents/GitHub/sunrise/app/js/_utility.js */\"./app/js/_utility.js\");\n__webpack_require__(/*! /Users/katierblackstone/Documents/GitHub/sunrise/app/js/_weather.js */\"./app/js/_weather.js\");\nmodule.exports = __webpack_require__(/*! /Users/katierblackstone/Documents/GitHub/sunrise/app/js/main.js */\"./app/js/main.js\");\n\n\n//# sourceURL=webpack:///multi_./app/js/_canvas-anim.js_./app/js/_data.js_./app/js/_date.js_./app/js/_utility.js_./app/js/_weather.js_./app/js/main.js?");
 
 /***/ })
 
 /******/ });
-© 2019 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Help
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
-Revert kirbykatie merged commit 1d7152f into master just now
